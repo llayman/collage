@@ -4,172 +4,68 @@ void main() {
   runApp(CollageApp());
 }
 
-// // Can run with just the following. It will be a blank screen.
-// import 'package:flutter/material.dart';
-
-//  1111111
-// void main() {
-//   runApp(CollageApp());
-// }
-
-// class CollageApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(title: "Collage");
-//   }
-// }
-
-// 22222222
-// The following will show a column of boxes
-// class CollageApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//         title: "Collage",
-//         home: Scaffold(
-//           appBar: AppBar(title: const Text("Collage")),
-//           body: Center(
-//               child: Column(children: const [
-//             DecoratedBox(
-//                 decoration: BoxDecoration(color: Colors.cyanAccent),
-//                 child:
-//                     Padding(padding: EdgeInsets.all(8), child: Text("Play"))),
-//             DecoratedBox(
-//                 decoration: BoxDecoration(color: Colors.cyanAccent),
-//                 child: Padding(padding: EdgeInsets.all(8), child: Text("Map"))),
-//             DecoratedBox(
-//                 decoration: BoxDecoration(color: Colors.cyanAccent),
-//                 child:
-//                     Padding(padding: EdgeInsets.all(8), child: Text("Store"))),
-//           ])),
-//         ));
-//   }
-// }
-
-// 3333333333
-// class CollageApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//         title: "Collage",
-//         home: Scaffold(
-//           appBar: AppBar(title: const Text("Collage")),
-//           body: Center(
-//               child: Column(children: const [
-//             PictureWidget(label: "Dog"),
-//             PictureWidget(label: "Map"),
-//             PictureWidget(label: "Stars"),
-//           ])),
-//         ));
-//   }
-// }
-
-// class PictureWidget extends StatelessWidget {
-//   const PictureWidget({required this.label});
-
-//   final String label;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return DecoratedBox(
-//         decoration: const BoxDecoration(color: Colors.cyanAccent),
-//         child: Padding(padding: const EdgeInsets.all(8), child: Text(label),));
-//   }
-// }
-
-// 4444444
-// class CollageApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//         title: "Collage",
-//         home: Scaffold(
-//           appBar: AppBar(title: const Text("Collage")),
-//           body: Center(
-//               child: Column(children: const [
-//                 Icon(Icons.pets),
-//             PictureWidget(label: "Dog"),
-//             SizedBox(height: 5,),
-//             Icon(Icons.map),
-//             PictureWidget(label: "Map"),
-//             SizedBox(height: 5,),
-//             Icon(Icons.store),
-//             PictureWidget(label: "Store"),
-//           ])),
-//         ));
-//   }
-// }
-
-// class PictureWidget extends StatelessWidget {
-//   const PictureWidget({required this.label});
-
-//   final String label;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return DecoratedBox(
-//         decoration: BoxDecoration(
-//             color: Colors.cyanAccent,
-//             border: Border.all(color: Colors.black, width: 2),
-//             borderRadius: BorderRadius.circular(8)),
-//         child: Padding(
-//           padding: const EdgeInsets.all(8),
-//           child: Text(label, style: TextStyle(fontWeight: FontWeight.bold),),
-//         ));
-//   }
-// }
-
-// 55555
+// 6666666
 class CollageApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // InstrinsicSize
     return MaterialApp(
         title: "Collage",
         home: Scaffold(
-          appBar: AppBar(title: const Text("Collage")),
+          appBar: AppBar(title: Text("something else")),
           body: Center(
-              child: IntrinsicWidth(child:Column(
-                children: const [
-            PictureWidget(label: "Dog", icon: Icon(Icons.pets)),
-            PictureWidget(label: "Map", icon: Icon(Icons.map)),
-            PictureWidget(label: "Store", icon: Icon(Icons.store)),
-          ]))),
+              child: IntrinsicWidth(
+            child: Column(
+              children: [
+                DecoratedText(label: "Play", imageFileName: "images/play.jpeg"),
+                SizedBox(height: 5),
+                DecoratedText(label: "Map", imageFileName: "images/map.jpeg"),
+                SizedBox(height: 5),
+                DecoratedText(label: "Store", imageFileName: "images/seven-eleven.jpeg"),
+                SizedBox(height: 5),
+                DecoratedText(label: "Wilmington", imageFileName: "images/wilmington.jpeg",
+                ),
+              ],
+            ),
+          )),
         ));
   }
 }
 
-class PictureWidget extends StatelessWidget {
-  const PictureWidget({required this.label, required this.icon});
+class DecoratedText extends StatelessWidget {
+  DecoratedText({required this.label, required this.imageFileName});
 
-  final String label;
-  final Icon icon;
+  String label;
+  String imageFileName;
+  // Icon icon;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 12) ,
-      decoration: BoxDecoration(
-            color: Colors.cyanAccent,
-            border: Border.all(color: Colors.black, width: 2),
-            borderRadius: BorderRadius.circular(8)),
-      child: 
-     Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        icon,
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: Text(label, style: TextStyle(fontWeight: FontWeight.bold),),
-        )
-    ],));
-    // return DecoratedBox(
-    //     decoration: BoxDecoration(
-    //         color: Colors.cyanAccent,
-    //         border: Border.all(color: Colors.black, width: 2),
-    //         borderRadius: BorderRadius.circular(8)),
-    //     child: Padding(
-    //       padding: const EdgeInsets.all(8),
-    //       child: Text(label, style: TextStyle(fontWeight: FontWeight.bold),),
-    //     ));
+    return InkWell(
+        onTap: () {
+          print("You tapped on $label");
+        },
+        onDoubleTap: () {
+          print("You double-tapped on $label");
+        },
+        onLongPress: () {
+          print("You long pressed on $label");
+        },
+        child: Ink(
+          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            SizedBox(
+              width: 5,
+            ),            
+            SizedBox(width: 50, height: 50, child: Image.asset(imageFileName)),
+            Padding(
+              child: Text(label, style: TextStyle(fontWeight: FontWeight.bold)),
+              padding: EdgeInsets.all(8),
+            )
+          ]),
+          decoration: BoxDecoration(
+              color: Colors.redAccent,
+              border: Border.all(color: Colors.black, width: 2),
+              borderRadius: BorderRadius.circular(8)),
+        ));
   }
 }
