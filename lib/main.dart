@@ -1,42 +1,44 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(CollageApp());
+  runApp(MaterialApp(title: "Collage", home: HomeScreen()));
 }
 
-// 6666666
-class CollageApp extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // InstrinsicSize
-    return MaterialApp(
-        title: "Collage",
-        home: Scaffold(
-          appBar: AppBar(title: Text("something else")),
-          body: Center(
-              child: IntrinsicWidth(
-            child: Column(
-              children: [
-                DecoratedText(label: "Play", imageFileName: "images/play.jpeg"),
-                SizedBox(height: 5),
-                DecoratedText(label: "Map", imageFileName: "images/map.jpeg"),
-                SizedBox(height: 5),
-                DecoratedText(label: "Store", imageFileName: "images/seven-eleven.jpeg"),
-                SizedBox(height: 5),
-                DecoratedText(label: "Wilmington", imageFileName: "images/wilmington.jpeg",
-                ),
-              ],
+    return Scaffold(
+      appBar: AppBar(title: const Text("Collage")),
+      body: Center(
+          child: IntrinsicWidth(
+        child: Column(
+          children: const [
+            DecoratedText(
+                label: "Play", imageFileName: "assets/images/play.jpeg"),
+            SizedBox(height: 5),
+            DecoratedText(
+                label: "Map", imageFileName: "assets/images/map.jpeg"),
+            SizedBox(height: 5),
+            DecoratedText(
+                label: "Store",
+                imageFileName: "assets/images/seven-eleven.jpeg"),
+            SizedBox(height: 5),
+            DecoratedText(
+              label: "Wilmington",
+              imageFileName: "assets/images/wilmington.jpeg",
             ),
-          )),
-        ));
+          ],
+        ),
+      )),
+    );
   }
 }
 
 class DecoratedText extends StatelessWidget {
-  DecoratedText({required this.label, required this.imageFileName});
+  const DecoratedText({required this.label, required this.imageFileName});
 
-  String label;
-  String imageFileName;
+  final String label;
+  final String imageFileName;
   // Icon icon;
 
   @override
@@ -53,13 +55,14 @@ class DecoratedText extends StatelessWidget {
         },
         child: Ink(
           child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            SizedBox(
+            const SizedBox(
               width: 5,
-            ),            
+            ),
             SizedBox(width: 50, height: 50, child: Image.asset(imageFileName)),
             Padding(
-              child: Text(label, style: TextStyle(fontWeight: FontWeight.bold)),
-              padding: EdgeInsets.all(8),
+              child: Text(label,
+                  style: const TextStyle(fontWeight: FontWeight.bold)),
+              padding: const EdgeInsets.all(8),
             )
           ]),
           decoration: BoxDecoration(
