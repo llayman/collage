@@ -93,12 +93,12 @@ class CollageApp extends StatelessWidget {
 // class DecoratedText extends StatelessWidget {
 //   const DecoratedText({required this.label});
 
-//   final String label;
+// //   final String label;
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return DecoratedBox(
-//         decoration: const BoxDecoration(color: Colors.cyanAccent),
-//         child: Padding(padding: const EdgeInsets.all(8), child: Text(label),));
-//   }
-// }
+// //   @override
+// //   Widget build(BuildContext context) {
+// //     return DecoratedBox(
+// //         decoration: const BoxDecoration(color: Colors.cyanAccent),
+// //         child: Padding(padding: const EdgeInsets.all(8), child: Text(label),));
+// //   }
+// // }
